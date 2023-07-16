@@ -2,6 +2,7 @@ import json
 import os
 import ifcopenshell
 import ifcopenshell.util.element as Element
+from excelwriter import writeExcel
 
 fileList = []
 for file in os.listdir('files'):
@@ -50,3 +51,5 @@ for file in fileList:
 
     with open('./export/' + fileName + '_oppervlakte.json', 'w') as jsonFile:
         json.dump(sumDict, jsonFile)
+
+    writeExcel(data, fileName)
