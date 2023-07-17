@@ -1,7 +1,7 @@
 import xlsxwriter
 
-def writeExcel(data: list, filename: str) -> None:
-    workbook = xlsxwriter.Workbook('./export/'+filename+'_excel.xlsx')
+def writeExcel(data: list, filename: str, path: str) -> None:
+    workbook = xlsxwriter.Workbook(f'{path}/{filename}_excel.xlsx')
     ws = workbook.add_worksheet()
 
     ws.write(0, 0, 'Component')
@@ -19,7 +19,7 @@ def writeExcel(data: list, filename: str) -> None:
                 usedList.append(artNum)
                 ws.write(row, 0, 'Any')
                 ws.write(row, 1, artNum)
-                ws.write(row, 2, '\'=2')
+                ws.write_string(row, 2, '=2')
                 row += 1
 
     workbook.close()
